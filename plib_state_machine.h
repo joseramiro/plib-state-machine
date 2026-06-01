@@ -27,11 +27,12 @@ typedef struct
 {
     const State *states;
     unsigned char currentState;
-    unsigned char entryFlag;
 }StateMachine_t;
 
 void StateMachine_Init(StateMachine_t *sm);
 
 void StateMachine(StateMachine_t *sm);
+
+void StateMachine_SetStateList(StateMachine_t *sm, State *states);
 
 #endif  // PLIB_STATE_MACHINE_H

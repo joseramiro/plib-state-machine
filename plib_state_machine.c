@@ -31,3 +31,8 @@ void StateMachine(StateMachine_t *sm)
         }
     }
 }
+
+void StateMachine_SetStateList(StateMachine_t *sm, State *states)
+{
+    sm->states = states;
+}
