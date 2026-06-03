@@ -1,6 +1,7 @@
 #ifndef PLIB_STATE_MACHINE_H
 #define PLIB_STATE_MACHINE_H
 
+#include <stdint.h>
 /**
  * @file plib_state_machine.h
  * @brief Machine d'état générique
@@ -9,24 +10,24 @@
  * @date 2025-10-06
  */
 
-typedef unsigned char (*ConditionFunc)(void);
+typedef uint8_t (*ConditionFunc)(void);
 typedef void (*ActionFunc)(void);
 
 typedef struct {
     ConditionFunc condition;
-    ActionFunc onTransition;
-    unsigned char nextState;
+    ActionFunc actions;
+    uint8_t nextState;
 }Transition;
 
 typedef struct {
     Transition *transitions;    // Transitions checked each tick
-    unsigned char numTransitions;
+    uint8_t numTransitions;
 }State;
 
 typedef struct
 {
     const State *states;
-    unsigned char currentState;
+    uint8_t currentState;
 }StateMachine_t;
 
 void StateMachine_Init(StateMachine_t *sm);

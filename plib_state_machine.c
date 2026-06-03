@@ -23,9 +23,8 @@ void StateMachine(StateMachine_t *sm)
 
         if (t->condition && t->condition())
         {
-            if (t->onTransition)
-                t->onTransition();
-
+            if(t->actions)
+                t->actions();
             sm->currentState = t->nextState;
             break;
         }
