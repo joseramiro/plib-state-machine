@@ -11,11 +11,18 @@
 void StateMachine_Init(StateMachine_t *sm)
 {
     sm->currentState = 0;
+    sm->entryFlag = 1;
 }
 
 void StateMachine(StateMachine_t *sm)
 {
     const State *s = &sm->states[sm->currentState];
+
+    if(sm->entryFlag && s->action)
+    {
+        s->action();
+        sm->entryFlag = 0;
+    }
 
     for (int i = 0; i < s->numTransitions; i++)
     {
@@ -26,6 +33,7 @@ void StateMachine(StateMachine_t *sm)
             if(t->actions)
                 t->actions();
             sm->currentState = t->nextState;
+            sm->entryFlag = 1;
             break;
         }
     }

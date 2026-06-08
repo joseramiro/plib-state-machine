@@ -22,12 +22,14 @@ typedef struct {
 typedef struct {
     Transition *transitions;    // Transitions checked each tick
     uint8_t numTransitions;
+    ActionFunc action;
 }State;
 
 typedef struct
 {
     const State *states;
     uint8_t currentState;
+    uint8_t entryFlag;
 }StateMachine_t;
 
 void StateMachine_Init(StateMachine_t *sm);
