@@ -38,4 +38,6 @@ void StateMachine(StateMachine_t *sm);
 
 void StateMachine_SetStateList(StateMachine_t *sm, State *states);
 
+void StateMachine_SetState(StateMachine_t *sm, const uint8_t state);
+
 #endif  // PLIB_STATE_MACHINE_H

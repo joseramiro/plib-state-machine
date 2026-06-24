@@ -43,3 +43,9 @@ void StateMachine_SetStateList(StateMachine_t *sm, State *states)
 {
     sm->states = states;
 }
+
+void StateMachine_SetState(StateMachine_t *sm, const uint8_t state)
+{
+    sm->currentState = state;
+    sm->entryFlag = 1;
+}
